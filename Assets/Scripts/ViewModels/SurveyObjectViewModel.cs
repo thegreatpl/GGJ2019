@@ -35,6 +35,7 @@ public class SurveyObjectViewModel : MonoBehaviour
 
 
             SpriteRenderer.sprite = sprite;
+            SpriteRenderer.color = surveyObject.Color; 
 
             GetComponent<CircleCollider2D>().RescaleToSprite(); 
         }

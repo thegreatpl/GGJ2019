@@ -41,6 +41,11 @@ namespace Assets.Scripts.StarSystems
         public string Image;
 
         /// <summary>
+        /// Color of this survey object. 
+        /// </summary>
+        public Color Color; 
+
+        /// <summary>
         /// Size of this object. 
         /// </summary>
         public float Size; 

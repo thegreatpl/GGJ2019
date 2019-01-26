@@ -30,6 +30,7 @@ public class Galaxy : MonoBehaviour
             Objects = new List<SurveyObject>()
             {
                 new SurveyObject() { Image = "Base3",
+                Color = Color.blue, 
                     Position = new Vector3(20, 20),
                     Size = 1f,
                     Name = "test",
