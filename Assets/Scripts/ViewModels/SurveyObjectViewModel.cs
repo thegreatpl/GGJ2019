@@ -33,6 +33,8 @@ public class SurveyObjectViewModel : MonoBehaviour
 
 
             SpriteRenderer.sprite = sprite;
+
+            GetComponent<CircleCollider2D>().RescaleToSprite(); 
         }
         else
             Debug.Log($"Sprite {surveyObject.Name} not found"); 
