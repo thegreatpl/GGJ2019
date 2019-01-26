@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.StarSystems
 {
+    [Serializable]
     public class StarSystem
     {
         /// <summary>

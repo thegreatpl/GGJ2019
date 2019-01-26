@@ -96,6 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 1
   RotationSpeed: 0.5
+  MaxSurveySpeed: 2
   Rigidbody2D: {fileID: 0}
 --- !u!50 &5138615475036450571
 Rigidbody2D:
@@ -130,4 +131,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db3415b77024fb4eb248efd2e29e410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SurveySpeed: 0.001
   ShipControlScript: {fileID: 0}
