@@ -24,8 +24,8 @@ public class SpeedControlPanelScript : MonoBehaviour
         var texts = GetComponentsInChildren<Text>();
         VelocityText = texts.FirstOrDefault(x => x.name == "Velocity");
         PositionText = texts.FirstOrDefault(x => x.name == "Position");
-
-        FollowRigidbody = FollowObject?.GetComponent<Rigidbody2D>(); 
+        if (FollowObject != null)
+            FollowRigidbody = FollowObject?.GetComponent<Rigidbody2D>(); 
     }
 
     // Update is called once per frame

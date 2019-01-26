@@ -15,6 +15,7 @@ public class CameraFollowScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = FollowObject.transform.position; 
+        if (FollowObject != null)
+            transform.position = FollowObject.transform.position; 
     }
 }
