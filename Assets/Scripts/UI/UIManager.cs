@@ -75,6 +75,14 @@ public class UIManager : MonoBehaviour
         CameraScript.FollowObject = GameController.Game.Player.gameObject; 
     }
 
+    public GameObject AddObject(string name, string prefabName)
+    {
+        var prefab = CM.GetPrefab(prefabName);
+        var instance = Instantiate(prefab, Canvas.transform);
+        CurrentElements.Add(name, instance);
+        return instance;
+    }
+
 
     public GameObject AddObject(string name, string prefabName, Vector3 position)
     {

@@ -22,24 +22,27 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var horizonatal = Input.GetAxis("Horizontal");
-        if (horizonatal < 0)
-            ShipControlScript. RotateClockwise();
-        if (horizonatal > 0)
-            ShipControlScript.RotateAntiClockwise();
+        if (!GameController.Game.Pause)
+        {
+            var horizonatal = Input.GetAxis("Horizontal");
+            if (horizonatal < 0)
+                ShipControlScript.RotateClockwise();
+            if (horizonatal > 0)
+                ShipControlScript.RotateAntiClockwise();
 
-        var verticle = Input.GetAxis("Vertical");
-        if (verticle < 0)
-            ShipControlScript. Decelerate();
-        else if (verticle > 0)
-            ShipControlScript.Accelerate();
+            var verticle = Input.GetAxis("Vertical");
+            if (verticle < 0)
+                ShipControlScript.Decelerate();
+            else if (verticle > 0)
+                ShipControlScript.Accelerate();
 
-        //this close to zero speed? stop then. 
-        else if (ShipControlScript.Rigidbody2D.velocity.magnitude < 0.2f)
-            ShipControlScript.AllStop();
+            //this close to zero speed? stop then. 
+            else if (ShipControlScript.Rigidbody2D.velocity.magnitude < 0.2f)
+                ShipControlScript.AllStop();
 
-        if (Input.GetButtonDown("Survey"))
-            Survey();
+            if (Input.GetButtonDown("Survey"))
+                Survey();
+        }
     }
 
     /// <summary>
@@ -75,7 +78,15 @@ public class Player : MonoBehaviour
         }
         ShipControlScript.AllStop();
 
-        StartCoroutine(SurveyObject(tosurvey.First().GetComponent<SurveyObjectViewModel>())); 
+        var survey = tosurvey.First().GetComponent<SurveyObjectViewModel>();
+        if (survey == null)
+            return;
+
+
+        if (survey.SurveyObject.SurveyProgress < 1)
+            StartCoroutine(SurveyObject(survey));
+        else
+            ShowSurveyReview(survey); 
     }
 
     public IEnumerator SurveyObject(SurveyObjectViewModel target)
@@ -95,5 +106,17 @@ public class Player : MonoBehaviour
         if (target.SurveyObject.SurveyProgress > 1)
              target.SurveyObject.SurveyProgress = 1; 
         ui.RemoveObject("surveyProgress"); 
+
+        //if (target.SurveyObject.SurveyProgress == 1)
+
+    }
+
+
+    void ShowSurveyReview(SurveyObjectViewModel surveyObjectViewModel)
+    {
+        var ui = GameController.Game.UIManager;
+        var obj = ui.AddObject("SurveyReview", "SurveyReview");
+        obj.GetComponent<SurveyReviewController>().ShowSurvey(surveyObjectViewModel.SurveyObject); 
+
     }
 }

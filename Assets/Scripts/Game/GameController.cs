@@ -28,7 +28,11 @@ public class GameController : MonoBehaviour
     /// <summary>
     /// The current player. 
     /// </summary>
-    public Player Player; 
+    public Player Player;
+
+
+
+    public bool Pause = false; 
 
     // Start is called before the first frame update
     void Start()
