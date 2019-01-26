@@ -38,6 +38,13 @@ public class StarSystemViewModel : MonoBehaviour
             newobj.transform.localScale = Vector3.one * obj.Size; 
             var vm = newobj.GetComponent<SurveyObjectViewModel>();
             vm.LoadSurveyObject(obj);
+
+            //if (vm.SurveyObject.SurveyProgress < 1)
+            //{
+            //    GameController.Game.UIManager.AddObject($"{vm.SurveyObject.Name}targeter", "TargetFinder")
+            //        .GetComponent<TargetFinderController>().SurveyObjectViewModel = vm;
+            //}
+
             surveyObjectViewModels.Add(vm); 
         }
     }

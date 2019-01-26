@@ -40,7 +40,7 @@ public class UIManager : MonoBehaviour
     /// <param name="screen"></param>
     public void LoadScreen(string screen)
     {
-        TearDown(); 
+        //TearDown(); 
 
         switch(screen)
         {

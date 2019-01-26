@@ -367,6 +367,7 @@ GameObject:
   - component: {fileID: 834023470}
   - component: {fileID: 834023469}
   - component: {fileID: 834023473}
+  - component: {fileID: 834023472}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -408,7 +409,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4.9808106
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -438,6 +439,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &834023472
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834023468}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!114 &834023473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -487,6 +504,7 @@ MonoBehaviour:
   CameraFollowScript: {fileID: 834023473}
   UIManager: {fileID: 0}
   Player: {fileID: 0}
+  Pause: 0
 --- !u!4 &1762796087
 Transform:
   m_ObjectHideFlags: 0
@@ -529,4 +547,7 @@ MonoBehaviour:
       type: 3}
   - Name: SurveyReview
     Object: {fileID: 7716469551251842178, guid: 87f2f3bd64e901d438aeba14d3b80d5b,
+      type: 3}
+  - Name: TargetFinder
+    Object: {fileID: 5194041963165382029, guid: 88ce25142d54c2347acd8e483c3660f5,
       type: 3}

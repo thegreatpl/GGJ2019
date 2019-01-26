@@ -14,7 +14,8 @@ public class CameraFollowScript : MonoBehaviour
     void Start()
     {
         mainCamera = GetComponent<Camera>(); 
-        Camera = this; 
+        Camera = this;
+        SetScreenCollider(); 
     }
 
     // Update is called once per frame
@@ -28,5 +29,12 @@ public class CameraFollowScript : MonoBehaviour
     public Vector3 ToScreenPosition(Vector3 worldSpace)
     {
         return mainCamera.WorldToScreenPoint(worldSpace); 
+    }
+
+
+    void SetScreenCollider()
+    {
+        var boxCollider = GetComponent<CircleCollider2D>();
+        //boxCollider.radius = mainCamera./ 10; 
     }
 }
