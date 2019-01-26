@@ -68,7 +68,7 @@ public class GameController : MonoBehaviour
         yield return null;
         var galaxyObj = Instantiate(ContentManager.GetPrefab("Galaxy"));
         galaxyObj.name = "Galaxy"; 
-        Galaxy = galaxyObj.AddComponent<Galaxy>();
+        Galaxy = galaxyObj.GetComponent<Galaxy>();
 
         yield return StartCoroutine(Galaxy.Generate());
 

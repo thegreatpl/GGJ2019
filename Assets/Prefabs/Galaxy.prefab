@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StarSystemViewModel: {fileID: 0}
+  StarsystemGenerator: {fileID: 4714546358153157944}
 --- !u!114 &8745057456915893684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,3 +71,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c183ade0809a41c478abeffe29da73e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ResourceMananger: {fileID: 0}
+  Atmospheres:
+  - None
+  - Oxygen
+  - Hydrogen
+  - Helium
+  - Methane
+  Galaxy: {fileID: 4017678714978238947}
+  MinObjects: 10
+  MaxObjects: 100
+  PlayingArea: 500

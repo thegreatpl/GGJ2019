@@ -19,4 +19,18 @@ public class ResourceMananger : MonoBehaviour
     {
         
     }
+
+    /// <summary>
+    /// Gets the base price for a resource. 
+    /// </summary>
+    /// <param name="resource"></param>
+    /// <returns></returns>
+    public float GetBasePriceForResource(string resource)
+    {
+        if (ResourceDefinitions.ContainsKey(resource))
+        {
+            return ResourceDefinitions[resource].ValuePerInstance; 
+        }
+        return 0; 
+    }
 }

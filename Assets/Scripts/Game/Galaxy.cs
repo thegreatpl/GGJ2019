@@ -5,13 +5,16 @@ using UnityEngine;
 
 public class Galaxy : MonoBehaviour
 {
-    public StarSystemViewModel StarSystemViewModel; 
+    public StarSystemViewModel StarSystemViewModel;
+
+    public StarsystemGenerator StarsystemGenerator; 
 
     public Dictionary<Vector2Int, StarSystem> StarSystems = new Dictionary<Vector2Int, StarSystem>(); 
 
     // Start is called before the first frame update
     void Start()
     {
+       // StarsystemGenerator = GetComponent<StarsystemGenerator>(); 
     }
 
     // Update is called once per frame
@@ -22,27 +25,16 @@ public class Galaxy : MonoBehaviour
 
     public IEnumerator Generate()
     {
-        StarSystems.Add(Vector2Int.zero, new StarSystem()
-        {
-            Location = Vector2Int.zero,
-            JumpPoint = new Vector3(10, 10),
-            Name = "TestSystem",
-            Objects = new List<SurveyObject>()
-            {
-                new SurveyObject() { Image = "Base3",
-                Color = Color.blue, 
-                    Position = new Vector3(20, 20),
-                    Size = 1f,
-                    Name = "test",
-                    StarSystem = "TestSystem",
-                SurveyDifficulty = 1f, Atmosphere = "None", Resources = new List<Resource>(), Type = "Asteroid"}
-            }
-        });
-        for (int idx = 0; idx < 100; idx++)
-        {
+        yield return null;
+        yield return StartCoroutine(StarsystemGenerator.GenerateSystem(Vector2Int.zero)); 
 
-            yield return null; 
-        }
+        //for (int idx = 0; idx < 100; idx++)
+        //{
+
+
+        //    yield return StartCoroutine(StarsystemGenerator.GenerateSystem(Vector2Int.zero));
+
+        //}
         LoadStarSystem(Vector2Int.zero);
 
     }
