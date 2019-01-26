@@ -100,14 +100,15 @@ public class Player : MonoBehaviour
         while(target.SurveyObject.SurveyProgress < 1 && Input.GetButton("Survey"))
         {
             target.SurveyObject.SurveyProgress += (SurveySpeed / target.SurveyObject.SurveyDifficulty);
-            text.text = $"{target.SurveyObject.SurveyProgress * 100}%"; 
+            text.text = $"{(target.SurveyObject.SurveyProgress * 100).ToString("#.##")}% "; 
             yield return null; 
         }
         if (target.SurveyObject.SurveyProgress > 1)
              target.SurveyObject.SurveyProgress = 1; 
         ui.RemoveObject("surveyProgress"); 
 
-        //if (target.SurveyObject.SurveyProgress == 1)
+        if (target.SurveyObject.SurveyProgress == 1)
+            ShowSurveyReview(target);
 
     }
 
