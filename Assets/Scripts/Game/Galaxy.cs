@@ -71,6 +71,7 @@ public class Galaxy : MonoBehaviour
 
         var newObject = new GameObject();
         newObject.name = newStarSystem.Name;
+        newObject.transform.parent = transform; 
         var starviewmodel = newObject.AddComponent<StarSystemViewModel>();
         starviewmodel.LoadStarSystem(newStarSystem);
         StarSystemViewModel = starviewmodel;

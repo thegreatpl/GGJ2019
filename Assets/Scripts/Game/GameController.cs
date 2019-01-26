@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    /// <summary>
+    /// Instance of the game. Accessible everywhere. 
+    /// </summary>
     public static GameController Game; 
 
     public Galaxy Galaxy;
@@ -11,6 +14,16 @@ public class GameController : MonoBehaviour
     public ContentManager ContentManager; 
 
     public ContentLoader ContentLoader;
+
+    /// <summary>
+    /// Reference to the camera script for the game. 
+    /// </summary>
+    public CameraFollowScript CameraFollowScript;  
+
+    /// <summary>
+    /// Ui manager. Controlls the UI. 
+    /// </summary>
+    public UIManager UIManager; 
 
     /// <summary>
     /// The current player. 
@@ -22,6 +35,7 @@ public class GameController : MonoBehaviour
     {
         Game = this; 
         ContentLoader = gameObject.AddComponent<ContentLoader>();
+        UIManager = gameObject.AddComponent<UIManager>(); 
         StartCoroutine(LoadNewGame()); 
     }
 
@@ -38,19 +52,21 @@ public class GameController : MonoBehaviour
             Destroy(Galaxy.gameObject); 
         yield return null;
         ContentManager = gameObject.GetComponent<ContentManager>();
-        ContentManager.LoadSprites(); 
-
+        ContentManager.LoadSprites();
+        UIManager.CM = ContentManager; 
         yield return null;
         var player = ContentManager.Inst.GetPrefab("Player");
         var playerObj = Instantiate(player);
         yield return null;
         Player = playerObj.GetComponent<Player>(); 
 
-        yield return null; 
+        yield return null;
+        var galaxyObj = new GameObject();
+        galaxyObj.name = "Galaxy"; 
+        Galaxy = galaxyObj.AddComponent<Galaxy>();
 
-        Galaxy = gameObject.AddComponent<Galaxy>();
+        yield return StartCoroutine(Galaxy.Generate());
 
-        yield return StartCoroutine(Galaxy.Generate()); 
-
+        UIManager.LoadScreen("MainGame"); 
     }
 }
