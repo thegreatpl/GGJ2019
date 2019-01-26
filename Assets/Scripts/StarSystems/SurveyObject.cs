@@ -47,6 +47,16 @@ namespace Assets.Scripts.StarSystems
         /// <summary>
         /// List of resources this planet has. 
         /// </summary>
-        public List<string> Resources; 
+        public List<string> Resources;
+
+        /// <summary>
+        /// How difficult this is to survey. 
+        /// </summary>
+        public float SurveyDifficulty; 
+
+        /// <summary>
+        /// How much progress has been made on the survey. 
+        /// </summary>
+        public float SurveyProgress = 0f; 
     }
 }

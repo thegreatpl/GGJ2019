@@ -524,3 +524,6 @@ MonoBehaviour:
   - Name: SpeedControlPanel
     Object: {fileID: 6074226024432155230, guid: 5d10d94dd00870e45971f11da7b10e8d,
       type: 3}
+  - Name: Text
+    Object: {fileID: 6787288873302130305, guid: 410290b15fc69154cb85999c84d0be88,
+      type: 3}

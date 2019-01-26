@@ -17,12 +17,12 @@ public class UIManager : MonoBehaviour
     /// <summary>
     /// Current elements on screen. 
     /// </summary>
-    public List<GameObject> CurrentElements; 
+    public Dictionary<string, GameObject> CurrentElements; 
 
     // Start is called before the first frame update
     void Start()
     {
-        CurrentElements = new List<GameObject>(); 
+        CurrentElements = new Dictionary<string, GameObject>(); 
         CM = GameController.Game.ContentManager;
         Canvas = GetComponentInChildren<Canvas>();
         CameraScript = GameController.Game.CameraFollowScript; 
@@ -59,7 +59,7 @@ public class UIManager : MonoBehaviour
     void TearDown()
     {
         foreach (var obj in CurrentElements)
-            Destroy(obj.gameObject); 
+            Destroy(obj.Value.gameObject); 
     }
 
 
@@ -69,9 +69,27 @@ public class UIManager : MonoBehaviour
 
         var instance = Instantiate(speedControlPanelPrefab, Canvas.transform);
         instance.GetComponent<SpeedControlPanelScript>()?.SetFollowObject(GameController.Game.Player.gameObject);  
-        CurrentElements.Add(instance);
+        CurrentElements.Add("SpeedControlPanel", instance);
 
 
         CameraScript.FollowObject = GameController.Game.Player.gameObject; 
+    }
+
+
+    public GameObject AddObject(string name, string prefabName, Vector3 position)
+    {
+        var prefab = CM.GetPrefab(prefabName);
+        var instance = Instantiate(prefab, position, transform.rotation, Canvas.transform);
+        CurrentElements.Add(name, instance);
+        return instance; 
+    }
+
+    public void RemoveObject(string name)
+    {
+        if (CurrentElements.ContainsKey(name))
+        {
+            Destroy(CurrentElements[name].gameObject);
+            CurrentElements.Remove(name); 
+        }
     }
 }

@@ -33,7 +33,8 @@ public class Galaxy : MonoBehaviour
                     Position = new Vector3(20, 20),
                     Size = 1f,
                     Name = "test",
-                    StarSystem = "TestSystem"}
+                    StarSystem = "TestSystem",
+                SurveyDifficulty = 1f}
             }
         });
         for (int idx = 0; idx < 100; idx++)

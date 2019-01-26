@@ -1,10 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    /// <summary>
+    /// How fast this player surveys. 
+    /// </summary>
+    public float SurveySpeed = 0.01f; 
 
     public ShipControlScript ShipControlScript; 
 
@@ -17,7 +22,24 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        var horizonatal = Input.GetAxis("Horizontal");
+        if (horizonatal < 0)
+            ShipControlScript. RotateClockwise();
+        if (horizonatal > 0)
+            ShipControlScript.RotateAntiClockwise();
+
+        var verticle = Input.GetAxis("Vertical");
+        if (verticle < 0)
+            ShipControlScript. Decelerate();
+        else if (verticle > 0)
+            ShipControlScript.Accelerate();
+
+        //this close to zero speed? stop then. 
+        else if (ShipControlScript.Rigidbody2D.velocity.magnitude < 0.2f)
+            ShipControlScript.AllStop();
+
+        if (Input.GetButtonDown("Survey"))
+            Survey();
     }
 
     /// <summary>
@@ -29,5 +51,49 @@ public class Player : MonoBehaviour
         ShipControlScript.Rigidbody2D.velocity = Vector3.zero; 
         ShipControlScript.transform.position = location; 
         
+    }
+
+    /// <summary>
+    /// Attempts to survey at the current position. 
+    /// </summary>
+    public void Survey()
+    {
+        var speed = ShipControlScript. Rigidbody2D.velocity.magnitude;
+
+        if (speed > ShipControlScript. MaxSurveySpeed)
+        {
+            Debug.Log("Too fast to survey");
+            return;
+        }
+
+        var possibles = Physics2D.OverlapPointAll(new Vector2(transform.position.x, transform.position.y));
+        var tosurvey = possibles.Where(x => x.GetComponent<SurveyObjectViewModel>() != null);
+        if (tosurvey.Count() < 1)
+        {
+            Debug.Log("Nothing to survey here!");
+            return;
+        }
+        ShipControlScript.AllStop();
+
+        StartCoroutine(SurveyObject(tosurvey.First().GetComponent<SurveyObjectViewModel>())); 
+    }
+
+    public IEnumerator SurveyObject(SurveyObjectViewModel target)
+    {
+        if (target == null)
+            yield break; 
+
+        var ui = GameController.Game.UIManager;
+        var obj = ui.AddObject("surveyProgress", "Text", ui.CameraScript.ToScreenPosition(transform.position));
+        var text = obj.GetComponent<Text>(); 
+        while(target.SurveyObject.SurveyProgress < 1 && Input.GetButton("Survey"))
+        {
+            target.SurveyObject.SurveyProgress += (SurveySpeed / target.SurveyObject.SurveyDifficulty);
+            text.text = $"{target.SurveyObject.SurveyProgress * 100}%"; 
+            yield return null; 
+        }
+        if (target.SurveyObject.SurveyProgress > 1)
+             target.SurveyObject.SurveyProgress = 1; 
+        ui.RemoveObject("surveyProgress"); 
     }
 }
