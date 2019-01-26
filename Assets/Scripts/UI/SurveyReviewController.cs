@@ -28,7 +28,9 @@ public class SurveyReviewController : MonoBehaviour
     void Update()
     {
         if (Input.GetButtonDown("Survey"))
-            Close(); 
+            Close();
+        if (Input.GetButtonDown("Attack"))
+            ClaimAndAuction(); 
     }
 
     void InitText()
@@ -62,6 +64,11 @@ public class SurveyReviewController : MonoBehaviour
         }
     }
 
+
+    public void ClaimAndAuction()
+    {
+
+    }
 
     public void Close()
     {
