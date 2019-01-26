@@ -29,7 +29,7 @@ public class Galaxy : MonoBehaviour
             Name = "TestSystem",
             Objects = new List<SurveyObject>()
             {
-                new SurveyObject() { Image = "128_0015",
+                new SurveyObject() { Image = "Base3",
                     Position = new Vector3(20, 20),
                     Size = 1f,
                     Name = "test",
