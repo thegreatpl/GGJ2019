@@ -105,7 +105,8 @@ MonoBehaviour:
     Resources: []
     SurveyDifficulty: 0
     SurveyProgress: 0
-  SpriteRenderer: {fileID: 0}
+  SpriteRenderer: {fileID: 8239577137859374721}
+  MinimapSprite: {fileID: 7515710063524383448}
 --- !u!58 &7402495946816667949
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -8,7 +8,9 @@ public class SurveyObjectViewModel : MonoBehaviour
 
     public SurveyObject SurveyObject;
 
-    public SpriteRenderer SpriteRenderer; 
+    public SpriteRenderer SpriteRenderer;
+
+    public SpriteRenderer MinimapSprite; 
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +21,7 @@ public class SurveyObjectViewModel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        CheckMini(); 
     }
 
     public void LoadSurveyObject(SurveyObject surveyObject)
@@ -37,7 +39,17 @@ public class SurveyObjectViewModel : MonoBehaviour
             GetComponent<CircleCollider2D>().RescaleToSprite(); 
         }
         else
-            Debug.Log($"Sprite {surveyObject.Name} not found"); 
+            Debug.Log($"Sprite {surveyObject.Name} not found");
+
+
+       
 
     }
+
+    void CheckMini()
+    {
+        if (SurveyObject.SurveyProgress >= 1)
+            MinimapSprite.color = Color.cyan;
+    }
 }
+
