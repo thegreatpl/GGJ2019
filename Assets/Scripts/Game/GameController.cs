@@ -57,7 +57,8 @@ public class GameController : MonoBehaviour
         yield return null;
         ContentManager = gameObject.GetComponent<ContentManager>();
         ContentManager.LoadSprites();
-        UIManager.CM = ContentManager; 
+        UIManager.CM = ContentManager;
+        UIManager.LoadScreen("Loading"); 
         yield return null;
         var player = ContentManager.Inst.GetPrefab("Player");
         var playerObj = Instantiate(player);
@@ -65,7 +66,7 @@ public class GameController : MonoBehaviour
         Player = playerObj.GetComponent<Player>(); 
 
         yield return null;
-        var galaxyObj = new GameObject();
+        var galaxyObj = Instantiate(ContentManager.GetPrefab("Galaxy"));
         galaxyObj.name = "Galaxy"; 
         Galaxy = galaxyObj.AddComponent<Galaxy>();
 

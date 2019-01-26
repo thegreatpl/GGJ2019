@@ -824,3 +824,6 @@ MonoBehaviour:
   - Name: TargetFinder
     Object: {fileID: 5194041963165382029, guid: 88ce25142d54c2347acd8e483c3660f5,
       type: 3}
+  - Name: Galaxy
+    Object: {fileID: 8256322027075954204, guid: 2d4f383b31400514eafd0f20da216c56,
+      type: 3}

@@ -45,9 +45,17 @@ public class UIManager : MonoBehaviour
         switch(screen)
         {
             case "MainGame":
+                //TearDown(); 
+                ToggleLoadScreen(false); 
                 LoadMainGame(); 
 
+                break;
+
+            case "Loading":
+               // TearDown();
+                ToggleLoadScreen(true);
                 break; 
+
 
             default:
                 Debug.LogError($"Unknown screen {screen} was attempted to be loaded");
@@ -75,6 +83,11 @@ public class UIManager : MonoBehaviour
         CameraScript.FollowObject = GameController.Game.Player.gameObject; 
     }
 
+    void ToggleLoadScreen(bool state)
+    {
+        var loadingscreen=  GameObject.Find("Loading");
+        loadingscreen.gameObject.SetActive(state);  
+    }
     public GameObject AddObject(string name, string prefabName)
     {
         var prefab = CM.GetPrefab(prefabName);
