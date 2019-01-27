@@ -17,7 +17,10 @@ public class UIManager : MonoBehaviour
     /// <summary>
     /// Current elements on screen. 
     /// </summary>
-    public Dictionary<string, GameObject> CurrentElements; 
+    public Dictionary<string, GameObject> CurrentElements;
+
+
+    public GameObject LoadScreenObj; 
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +29,7 @@ public class UIManager : MonoBehaviour
         CM = GameController.Game.ContentManager;
         Canvas = GetComponentInChildren<Canvas>();
         CameraScript = GameController.Game.CameraFollowScript; 
+        LoadScreenObj = GameObject.Find("Loading");
     }
 
     // Update is called once per frame
@@ -88,10 +92,11 @@ public class UIManager : MonoBehaviour
         CameraScript.FollowObject = GameController.Game.Player.gameObject; 
     }
 
-    void ToggleLoadScreen(bool state)
+    public void ToggleLoadScreen(bool state)
     {
-        var loadingscreen=  GameObject.Find("Loading");
-        loadingscreen.gameObject.SetActive(state);  
+        GameController.Game.Pause = state; 
+        //var loadingscreen=  GameObject.Find("Loading");
+        LoadScreenObj.gameObject.SetActive(state);  
     }
     public GameObject AddObject(string name, string prefabName)
     {

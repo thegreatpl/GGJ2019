@@ -31,18 +31,23 @@ public class Galaxy : MonoBehaviour
         yield return null;
         yield return StartCoroutine(StarsystemGenerator.ResourceMananger.LoadResources()); 
         yield return null;
-        yield return StartCoroutine(StarsystemGenerator.GenerateSystem(Vector2Int.zero));
-
-        //for (int idx = 0; idx < 100; idx++)
-        //{
-
-
-        //    yield return StartCoroutine(StarsystemGenerator.GenerateSystem(Vector2Int.zero));
-
-        //}
         yield return StartCoroutine(AuctionHouseController.GenerateCompanies()); 
-        LoadStarSystem(Vector2Int.zero);
 
+        yield return StartCoroutine(GenerateSystem(Vector2Int.zero));
+
+    }
+
+    /// <summary>
+    /// Generates a new star system on request. 
+    /// </summary>
+    /// <param name="system"></param>
+    /// <returns></returns>
+    IEnumerator GenerateSystem(Vector2Int system)
+    {
+        GameController.Game.UIManager.ToggleLoadScreen(true); 
+        yield return StartCoroutine(StarsystemGenerator.GenerateSystem(system));
+        _loadsystem(system);
+        GameController.Game.UIManager.ToggleLoadScreen(false); 
     }
 
     /// <summary>
@@ -65,6 +70,12 @@ public class Galaxy : MonoBehaviour
         if (!StarSystems.ContainsKey(starSystem))
             return false;
 
+        _loadsystem(starSystem);
+        return true; 
+    }
+
+    private void _loadsystem(Vector2Int starSystem)
+    {  
         var newStarSystem = StarSystems[starSystem];
 
         var oldSystem = StarSystemViewModel;
@@ -80,7 +91,5 @@ public class Galaxy : MonoBehaviour
         //destroy the old star system.
         if (oldSystem != null)
             Destroy(oldSystem.gameObject);
-        return true; 
-
     }
 }
