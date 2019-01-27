@@ -82,7 +82,10 @@ public class SurveyReviewController : MonoBehaviour
     public void ClaimAndAuction()
     {
         if (!string.IsNullOrWhiteSpace(SurveyObject?.Owner))
+        {
+            MessageWindow.Show("Planet is already owned!"); 
             return;
+        }
 
         GameController.Game.Galaxy.AuctionHouseController.AuctionObject(SurveyObject); 
 

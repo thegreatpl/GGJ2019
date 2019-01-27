@@ -78,6 +78,13 @@ public class ResourceMananger : MonoBehaviour
             Rarity = 0.80f,
             ValuePerInstance = -0.5f
         });
+        AddResource(new ResourceDefinition()
+        {
+            Name = "Rock",
+            PlanetTypes = new List<string>() { "Planet", "Asteroid" },
+            Rarity = 0.80f,
+            ValuePerInstance = 0.0f
+        });
 
 
         foreach (var rd in ResourceDefinitions)
