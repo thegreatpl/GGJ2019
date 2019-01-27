@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4017678714978238947}
   - component: {fileID: 8745057456915893684}
   - component: {fileID: 4714546358153157944}
+  - component: {fileID: 102523463726770132}
   m_Layer: 0
   m_Name: Galaxy
   m_TagString: Untagged
@@ -47,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StarSystemViewModel: {fileID: 0}
   StarsystemGenerator: {fileID: 4714546358153157944}
+  AuctionHouseController: {fileID: 102523463726770132}
 --- !u!114 &8745057456915893684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,6 +81,23 @@ MonoBehaviour:
   - Helium
   - Methane
   Galaxy: {fileID: 4017678714978238947}
-  MinObjects: 10
-  MaxObjects: 100
+  MinObjects: 20
+  MaxObjects: 200
   PlayingArea: 500
+--- !u!114 &102523463726770132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8256322027075954204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ae3bb78f9e56fc4382b1ac36a31e5d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AuctionCost: 1000
+  AtmosphereRatingMultiplier: 5
+  MaxAtmosphereRating: 10
+  Player: {fileID: 0}
+  StarsystemGenerator: {fileID: 4714546358153157944}

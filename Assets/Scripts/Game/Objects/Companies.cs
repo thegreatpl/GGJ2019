@@ -9,12 +9,35 @@ namespace Assets.Scripts.Game.Objects
 {
     public class Companies
     {
+        /// <summary>
+        /// Name of the company.
+        /// </summary>
         public string Name;
 
-
+        /// <summary>
+        /// Multiplier on size. 
+        /// </summary>
         public float SizeModifier;
 
-        public Dictionary<string, Rating> AtmosphereRating; 
+        /// <summary>
+        /// Ratings on atmosphere. 
+        /// </summary>
+        public Dictionary<string, Rating> AtmosphereRating;
+
+        /// <summary>
+        /// When this one last won an auction in ticks. 
+        /// </summary>
+        public int LastWon;
+
+        /// <summary>
+        /// How long between it bids. 
+        /// </summary>
+        public int MinTimeToDevelop;
+
+        /// <summary>
+        /// The ratings for the resouces. 
+        /// </summary>
+        public Dictionary<string, Rating> ResourceRatings; 
 
         
 
@@ -24,8 +47,23 @@ namespace Assets.Scripts.Game.Objects
             if (!AtmosphereRating.ContainsKey(obj.Atmosphere))
                 return 0;
 
+            if (MinTimeToDevelop > LastWon)
+                return 0; 
+
             float price = 0;
 
+            if (AtmosphereRating.ContainsKey(obj.Atmosphere))
+                price += AtmosphereRating[obj.Atmosphere].Price; 
+
+            foreach(var resource in obj.Resources)
+            {
+                if (ResourceRatings.ContainsKey(resource.Name))
+                {
+                    price += ResourceRatings[resource.Name].Price * resource.Amount; 
+                }
+            }
+
+            price *= (obj.Size * SizeModifier); 
 
             return price; 
         }

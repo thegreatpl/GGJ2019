@@ -81,7 +81,7 @@ public class SurveyReviewController : MonoBehaviour
 
     public void ClaimAndAuction()
     {
-        if (string.IsNullOrWhiteSpace(SurveyObject?.Owner))
+        if (!string.IsNullOrWhiteSpace(SurveyObject?.Owner))
             return;
 
         GameController.Game.Galaxy.AuctionHouseController.AuctionObject(SurveyObject); 

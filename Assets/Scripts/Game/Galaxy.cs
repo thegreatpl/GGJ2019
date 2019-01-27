@@ -28,7 +28,7 @@ public class Galaxy : MonoBehaviour
     public IEnumerator Generate()
     {
         yield return null;
-        yield return StartCoroutine(StarsystemGenerator.GenerateSystem(Vector2Int.zero)); 
+        yield return StartCoroutine(StarsystemGenerator.GenerateSystem(Vector2Int.zero));
 
         //for (int idx = 0; idx < 100; idx++)
         //{
@@ -37,6 +37,7 @@ public class Galaxy : MonoBehaviour
         //    yield return StartCoroutine(StarsystemGenerator.GenerateSystem(Vector2Int.zero));
 
         //}
+        yield return StartCoroutine(AuctionHouseController.GenerateCompanies()); 
         LoadStarSystem(Vector2Int.zero);
 
     }
