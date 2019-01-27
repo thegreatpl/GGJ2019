@@ -24,7 +24,7 @@ public class MenuScript : MonoBehaviour
 
     public void Resume()
     {
-
+        GameController.Game?.UIManager.ToggleMenu(); 
     }
 
     public void Quit()

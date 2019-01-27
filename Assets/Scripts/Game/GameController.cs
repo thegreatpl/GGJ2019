@@ -59,6 +59,7 @@ public class GameController : MonoBehaviour
         ContentManager.LoadSprites();
         UIManager.CM = ContentManager;
         UIManager.LoadScreen("Loading");
+        UIManager.SetMenu(); 
         MessageWindow.Instance.Init(); 
         yield return null;
         var player = ContentManager.Inst.GetPrefab("Player");

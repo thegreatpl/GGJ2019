@@ -32,8 +32,13 @@ public class UIManager : MonoBehaviour
         Canvas = GetComponentInChildren<Canvas>();
         CameraScript = GameController.Game.CameraFollowScript; 
         LoadScreenObj = GameObject.Find("Loading");
-        Menu = Instantiate(CM.GetPrefab("Menu"), transform);
-        Menu.SetActive(false); 
+
+    }
+
+    public void SetMenu()
+    {
+        Menu = Instantiate(CM.GetPrefab("Menu"), Canvas.transform);
+        Menu.SetActive(true); 
     }
 
     // Update is called once per frame
@@ -106,7 +111,7 @@ public class UIManager : MonoBehaviour
 
     public void ToggleMenu()
     {
-        Menu.SetActive(Menu.activeInHierarchy); 
+        Menu.SetActive(!Menu.activeInHierarchy); 
     }
 
     public GameObject AddObject(string name, string prefabName)
