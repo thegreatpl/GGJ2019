@@ -43,7 +43,7 @@ public class StarsystemGenerator : MonoBehaviour
 
     public IEnumerator GenerateSystem(Vector2Int location)
     {
-        var jumpPoint = new Vector3(Random.Range(-100, 100), Random.Range(-100, 100));
+        var jumpPoint = new Vector3(Random.Range(-100, 100), Random.Range(-100, 100), -1);
         string name = ""; 
         for(int idx = 0; idx < 6; idx++)
         {
