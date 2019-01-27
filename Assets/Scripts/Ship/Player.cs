@@ -11,7 +11,12 @@ public class Player : MonoBehaviour
     /// </summary>
     public float SurveySpeed = 0.01f; 
 
-    public ShipControlScript ShipControlScript; 
+    public ShipControlScript ShipControlScript;
+
+    /// <summary>
+    /// Money this player has. 
+    /// </summary>
+    public float Money; 
 
     // Start is called before the first frame update
     void Start()

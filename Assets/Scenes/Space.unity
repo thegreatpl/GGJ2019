@@ -902,3 +902,5 @@ MonoBehaviour:
   - Name: Galaxy
     Object: {fileID: 8256322027075954204, guid: 2d4f383b31400514eafd0f20da216c56,
       type: 3}
+  - Name: MoneyPanel
+    Object: {fileID: 813326865637304705, guid: 4df9c089fb963b048b89c384693323f2, type: 3}

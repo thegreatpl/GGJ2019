@@ -79,6 +79,11 @@ public class UIManager : MonoBehaviour
         instance.GetComponent<SpeedControlPanelScript>()?.SetFollowObject(GameController.Game.Player.gameObject);  
         CurrentElements.Add("SpeedControlPanel", instance);
 
+        var moneypanel = CM.GetPrefab("MoneyPanel");
+
+        var instance2 = Instantiate(moneypanel, Canvas.transform);
+        instance2.GetComponent<MoneyPanelScript>().Player = GameController.Game.Player;
+        CurrentElements.Add("MoneyPanel", instance2);
 
         CameraScript.FollowObject = GameController.Game.Player.gameObject; 
     }
