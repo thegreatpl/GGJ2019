@@ -19,7 +19,7 @@ public class AuctionHouseController : MonoBehaviour
 
     public int MaxAtmosphereRating = 10;
 
-    public int MaxResourcerating = 20; 
+    public int MaxResourcerating = 100; 
 
     public Player Player;
 

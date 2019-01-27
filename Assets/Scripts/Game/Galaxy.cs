@@ -28,6 +28,8 @@ public class Galaxy : MonoBehaviour
     public IEnumerator Generate()
     {
         yield return null;
+        yield return StartCoroutine(StarsystemGenerator.ResourceMananger.LoadResources()); 
+        yield return null;
         yield return StartCoroutine(StarsystemGenerator.GenerateSystem(Vector2Int.zero));
 
         //for (int idx = 0; idx < 100; idx++)

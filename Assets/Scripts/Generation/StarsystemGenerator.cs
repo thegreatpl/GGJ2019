@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.StarSystems;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class StarsystemGenerator : MonoBehaviour
@@ -93,6 +94,18 @@ public class StarsystemGenerator : MonoBehaviour
             Resources = new List<Resource>(), 
             SurveyProgress = 0f
         };
+        //add resources to a planet. 
+        for (int idx = 0; idx < Random.Range(0, 10); idx++)
+        {
+            var resource = ResourceMananger.ResourceDefinitions.Values.RandomElement();
+            Resource res = obj.Resources.FirstOrDefault(x => x.Name == resource.Name); 
+            if (res == null)
+            {
+                res = new Resource() { Name = resource.Name, Amount = 0 };
+                obj.Resources.Add(res); 
+            }
+            res.Amount++; 
+        }
 
         return obj; 
     }

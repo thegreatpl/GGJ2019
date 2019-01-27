@@ -20,6 +20,52 @@ public class ResourceMananger : MonoBehaviour
         
     }
 
+    public IEnumerator LoadResources()
+    {
+        ResourceDefinitions = new Dictionary<string, ResourceDefinition>();
+        yield return null;
+
+        AddResource(new ResourceDefinition()
+        {
+            Name = "Iron Ore",
+            PlanetTypes = new List<string>() { "Planet", "Asteroid" },
+            Rarity = 0.75f,
+            ValuePerInstance = 5f
+        });
+        AddResource(new ResourceDefinition()
+        {
+            Name = "Titanium",
+            PlanetTypes = new List<string>() { "Planet", "Asteroid" },
+            Rarity = 0.25f,
+            ValuePerInstance = 7.5f
+        });
+        AddResource(new ResourceDefinition()
+        {
+            Name = "Adimantium",
+            PlanetTypes = new List<string>() { "Planet", "Asteroid" },
+            Rarity = 0.01f,
+            ValuePerInstance = 50
+        });
+        AddResource(new ResourceDefinition()
+        {
+            Name = "Uranium",
+            PlanetTypes = new List<string>() { "Planet", "Asteroid" },
+            Rarity = 0.05f,
+            ValuePerInstance = 10
+        });
+        AddResource(new ResourceDefinition()
+        {
+            Name = "Gold",
+            PlanetTypes = new List<string>() { "Planet", "Asteroid" },
+            Rarity = 0.80f,
+            ValuePerInstance = 0.1f
+        });
+    }
+    void AddResource(ResourceDefinition rd)
+    {
+        ResourceDefinitions.Add(rd.Name, rd); 
+    }
+
     /// <summary>
     /// Gets the base price for a resource. 
     /// </summary>
