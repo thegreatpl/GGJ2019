@@ -25,7 +25,7 @@ public class MessageScript : MonoBehaviour
         while (Text.color.a > 0)
         {
             Text.color = new Color(Text.color.r, Text.color.g, Text.color.b, Text.color.a -0.01f);
-            yield return new WaitForSeconds(0.5f); 
+            yield return new WaitForSeconds(0.1f); 
         }
 
         Destroy(gameObject); 
