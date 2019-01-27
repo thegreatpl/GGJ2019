@@ -61,6 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e43c16ea71e197a4a9b46dafbc6ec4c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DifficultyMultiplier: 2
 --- !u!114 &4714546358153157944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,5 +100,6 @@ MonoBehaviour:
   AuctionCost: 1000
   AtmosphereRatingMultiplier: 5
   MaxAtmosphereRating: 10
+  MaxResourcerating: 100
   Player: {fileID: 0}
   StarsystemGenerator: {fileID: 4714546358153157944}
