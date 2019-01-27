@@ -38,7 +38,7 @@ public class UIManager : MonoBehaviour
     public void SetMenu()
     {
         Menu = Instantiate(CM.GetPrefab("Menu"), Canvas.transform);
-        Menu.SetActive(true); 
+        Menu.SetActive(false); 
     }
 
     // Update is called once per frame
