@@ -65,13 +65,15 @@ public class Galaxy : MonoBehaviour
     /// </summary>
     /// <param name="starSystem"></param>
     /// <returns></returns>
-    public bool LoadStarSystem(Vector2Int starSystem)
+    public void LoadStarSystem(Vector2Int starSystem)
     {
         if (!StarSystems.ContainsKey(starSystem))
-            return false;
+        {
+            StartCoroutine(GenerateSystem(starSystem)); 
+            return;
+        }
 
         _loadsystem(starSystem);
-        return true; 
     }
 
     private void _loadsystem(Vector2Int starSystem)

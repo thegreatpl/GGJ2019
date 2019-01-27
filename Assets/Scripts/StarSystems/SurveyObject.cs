@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Assets.Scripts.StarSystems
 {
     [Serializable]
-    public class SurveyObject
+    public class SurveyObject : IPosition
     {
         /// <summary>
         /// Name of this object. 
@@ -23,7 +23,7 @@ namespace Assets.Scripts.StarSystems
         /// <summary>
         /// Position of this object in the star system. 
         /// </summary>
-        public Vector3 Position; 
+        public Vector3 Position { get; set; }
 
         /// <summary>
         /// What atmosphere this planet has. 

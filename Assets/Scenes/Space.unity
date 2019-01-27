@@ -904,3 +904,6 @@ MonoBehaviour:
       type: 3}
   - Name: MoneyPanel
     Object: {fileID: 813326865637304705, guid: 4df9c089fb963b048b89c384693323f2, type: 3}
+  - Name: WarpPoint
+    Object: {fileID: 5887680420530067806, guid: eba0d8ce1de56614d8f127c60b3ca393,
+      type: 3}

@@ -54,7 +54,7 @@ public class StarsystemGenerator : MonoBehaviour
             JumpPoint = jumpPoint,
             Location = location,
             Name = name,
-            Objects = new List<SurveyObject>() 
+            Objects = new List<SurveyObject>() , WarpPoints = new List<WarpPoint>()
         };
 
         yield return null;
@@ -65,6 +65,22 @@ public class StarsystemGenerator : MonoBehaviour
             obj.StarSystem = Starsystem.Name; 
             Starsystem.Objects.Add(obj); 
             yield return null; 
+        }
+
+        for (int idx = 0; idx < Random.Range(2, 10); idx++)
+        {
+            var locationwp = new Vector3();
+            do
+            {
+                locationwp.x = Random.Range(-PlayingArea, PlayingArea);
+                locationwp.y = Random.Range(-PlayingArea, PlayingArea);
+            } while (isTooClose(30, locationwp, Starsystem.Objects) && isTooClose(30, locationwp, Starsystem.WarpPoints));
+
+            var warp = new WarpPoint()
+            {
+                Position = locationwp, ToSystem = new Vector2Int(Random.Range(-2, 2), Random.Range(-2, 2))
+            };
+            Starsystem.WarpPoints.Add(warp); 
         }
 
         Galaxy.StarSystems.Add(location, Starsystem); 
@@ -118,6 +134,16 @@ public class StarsystemGenerator : MonoBehaviour
                 return true;
         }
         return false; 
+    }
+
+    bool isTooClose(float minDist, Vector3 current, List<WarpPoint> others)
+    {
+        foreach (var o in others)
+        {
+            if (Vector3.Distance(current, o.Position) < minDist)
+                return true;
+        }
+        return false;
     }
 
 }

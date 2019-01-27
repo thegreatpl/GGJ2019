@@ -28,6 +28,11 @@ namespace Assets.Scripts.StarSystems
         /// <summary>
         /// List of objects in the star system that can be surveyed. 
         /// </summary>
-        public List<SurveyObject> Objects; 
+        public List<SurveyObject> Objects;
+
+        /// <summary>
+        /// List of warp points in the star system. 
+        /// </summary>
+        public List<WarpPoint> WarpPoints; 
     }
 }

@@ -10,6 +10,8 @@ public class StarSystemViewModel : MonoBehaviour
 
     public List<SurveyObjectViewModel> surveyObjectViewModels = new List<SurveyObjectViewModel>(); 
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,22 +32,30 @@ public class StarSystemViewModel : MonoBehaviour
     {
         StarSystem = starSystem;
         var surveyPrefab = ContentManager.Inst.GetPrefab("SurveyObject");
-        if (surveyPrefab == null)
-            return; 
-        foreach(var obj in StarSystem.Objects)
+        if (surveyPrefab != null)
+            foreach(var obj in StarSystem.Objects)
+            {
+                var newobj = Instantiate(surveyPrefab, obj.Position, transform.rotation, transform);
+                newobj.transform.localScale = Vector3.one * obj.Size; 
+                var vm = newobj.GetComponent<SurveyObjectViewModel>();
+                vm.LoadSurveyObject(obj);
+
+                //if (vm.SurveyObject.SurveyProgress < 1)
+                //{
+                //    GameController.Game.UIManager.AddObject($"{vm.SurveyObject.Name}targeter", "TargetFinder")
+                //        .GetComponent<TargetFinderController>().SurveyObjectViewModel = vm;
+                //}
+
+                surveyObjectViewModels.Add(vm); 
+            }
+        var warpPrefab = ContentManager.Inst.GetPrefab("WarpPoint");
+        if (warpPrefab == null)
+            return;
+        foreach (var wp in StarSystem.WarpPoints)
         {
-            var newobj = Instantiate(surveyPrefab, obj.Position, transform.rotation, transform);
-            newobj.transform.localScale = Vector3.one * obj.Size; 
-            var vm = newobj.GetComponent<SurveyObjectViewModel>();
-            vm.LoadSurveyObject(obj);
-
-            //if (vm.SurveyObject.SurveyProgress < 1)
-            //{
-            //    GameController.Game.UIManager.AddObject($"{vm.SurveyObject.Name}targeter", "TargetFinder")
-            //        .GetComponent<TargetFinderController>().SurveyObjectViewModel = vm;
-            //}
-
-            surveyObjectViewModels.Add(vm); 
+            var newobj = Instantiate(warpPrefab, wp.Position, transform.rotation, transform);
+            var vm = newobj.GetComponent<WarpPointViewModel>();
+            vm.LoadWarpPoint(wp);
         }
     }
 
