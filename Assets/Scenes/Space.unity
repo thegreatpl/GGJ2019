@@ -760,7 +760,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1065198933
 RectTransform:
   m_ObjectHideFlags: 0
@@ -992,3 +992,6 @@ MonoBehaviour:
       type: 3}
   - Name: Message
     Object: {fileID: 915474094928830919, guid: 1ead34f150ed52d4a985373275d52af0, type: 3}
+  - Name: Menu
+    Object: {fileID: 4524627912960544570, guid: cbfdb55c12b86df418438a793fdf1d29,
+      type: 3}
