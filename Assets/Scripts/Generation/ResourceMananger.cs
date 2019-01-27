@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class ResourceMananger : MonoBehaviour
 {
+    /// <summary>
+    /// How much to multiply the cost of the resource by. 
+    /// </summary>
+    public float DifficultyMultiplier = 10; 
 
     public Dictionary<string, ResourceDefinition> ResourceDefinitions = new Dictionary<string, ResourceDefinition>(); 
 
@@ -30,36 +34,40 @@ public class ResourceMananger : MonoBehaviour
             Name = "Iron Ore",
             PlanetTypes = new List<string>() { "Planet", "Asteroid" },
             Rarity = 0.75f,
-            ValuePerInstance = 5f
+            ValuePerInstance = 0.5f
         });
         AddResource(new ResourceDefinition()
         {
             Name = "Titanium",
             PlanetTypes = new List<string>() { "Planet", "Asteroid" },
             Rarity = 0.25f,
-            ValuePerInstance = 7.5f
+            ValuePerInstance = 0.75f
         });
         AddResource(new ResourceDefinition()
         {
             Name = "Adimantium",
             PlanetTypes = new List<string>() { "Planet", "Asteroid" },
             Rarity = 0.01f,
-            ValuePerInstance = 50
+            ValuePerInstance = 5
         });
         AddResource(new ResourceDefinition()
         {
             Name = "Uranium",
             PlanetTypes = new List<string>() { "Planet", "Asteroid" },
             Rarity = 0.05f,
-            ValuePerInstance = 10
+            ValuePerInstance = 1
         });
         AddResource(new ResourceDefinition()
         {
             Name = "Gold",
             PlanetTypes = new List<string>() { "Planet", "Asteroid" },
             Rarity = 0.80f,
-            ValuePerInstance = 0.1f
+            ValuePerInstance = 0.01f
         });
+
+
+        foreach (var rd in ResourceDefinitions)
+            rd.Value.ValuePerInstance *= DifficultyMultiplier; 
     }
     void AddResource(ResourceDefinition rd)
     {
