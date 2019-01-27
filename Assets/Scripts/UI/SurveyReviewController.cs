@@ -72,7 +72,7 @@ public class SurveyReviewController : MonoBehaviour
 
         foreach(var res in survey.Resources)
         {
-            Text.text += $"     {res.Name}: {res.Amount}"; 
+            Text.text += $"     {res.Name}: {res.Amount} {Environment.NewLine}"; 
         }
 
        
