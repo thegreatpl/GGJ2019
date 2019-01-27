@@ -50,7 +50,7 @@ public class SurveyObjectViewModel : MonoBehaviour
     void CheckMini()
     {
         if (SurveyObject.SurveyProgress >= 1)
-            MinimapSprite.color = Color.cyan;
+            MinimapSprite.color = Color.white;
     }
 }
 

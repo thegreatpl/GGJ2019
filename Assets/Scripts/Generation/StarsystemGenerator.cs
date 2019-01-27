@@ -104,14 +104,14 @@ public class StarsystemGenerator : MonoBehaviour
             Name = $"{starSystem.Name} {(starSystem.Objects.Count + 1).ToRoman()}", 
             Atmosphere = Atmospheres.RandomElement(),
             Image = "Base3",
-            Color = new Color32(165, 42, 42, 255),
+            Color = new Color32(60, 1, 1, 255),
             SurveyDifficulty = Random.Range(0.5f, 1.5f),
             Size = Random.Range(1, 5), Type = "Planet",
             Resources = new List<Resource>(), 
             SurveyProgress = 0f
         };
         //add resources to a planet. 
-        for (int idx = 0; idx < Random.Range(0, 10); idx++)
+        for (int idx = 0; idx < Random.Range(-3, 10); idx++)
         {
             var resource = ResourceMananger.ResourceDefinitions.Values.RandomElement();
             Resource res = obj.Resources.FirstOrDefault(x => x.Name == resource.Name); 

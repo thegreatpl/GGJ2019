@@ -15,7 +15,7 @@ public class AuctionHouseController : MonoBehaviour
     /// <summary>
     /// How much the atmosphere rating is multiplied by. 
     /// </summary>
-    public float AtmosphereRatingMultiplier = 5.5f;
+    public float AtmosphereRatingMultiplier = 2.75f;
 
     public int MaxAtmosphereRating = 10;
 

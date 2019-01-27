@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.23584908, g: 0.0011124983, b: 0.0011124983, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -97,14 +97,15 @@ MonoBehaviour:
   SurveyObject:
     Name: 
     StarSystem: 
-    Position: {x: 0, y: 0, z: 0}
     Atmosphere: 
     Type: 
     Image: 
+    Color: {r: 0, g: 0, b: 0, a: 0}
     Size: 0
     Resources: []
     SurveyDifficulty: 0
     SurveyProgress: 0
+    Owner: 
   SpriteRenderer: {fileID: 8239577137859374721}
   MinimapSprite: {fileID: 7515710063524383448}
 --- !u!58 &7402495946816667949

@@ -8,7 +8,7 @@ public class ResourceMananger : MonoBehaviour
     /// <summary>
     /// How much to multiply the cost of the resource by. 
     /// </summary>
-    public float DifficultyMultiplier = 10; 
+    public float DifficultyMultiplier = 5; 
 
     public Dictionary<string, ResourceDefinition> ResourceDefinitions = new Dictionary<string, ResourceDefinition>(); 
 
@@ -63,6 +63,20 @@ public class ResourceMananger : MonoBehaviour
             PlanetTypes = new List<string>() { "Planet", "Asteroid" },
             Rarity = 0.80f,
             ValuePerInstance = 0.01f
+        });
+        AddResource(new ResourceDefinition()
+        {
+            Name = "Toxic Waste",
+            PlanetTypes = new List<string>() { "Planet", "Asteroid" },
+            Rarity = 0.80f,
+            ValuePerInstance = -1f
+        });
+        AddResource(new ResourceDefinition()
+        {
+            Name = "Dangerous Native Life",
+            PlanetTypes = new List<string>() { "Planet", "Asteroid" },
+            Rarity = 0.80f,
+            ValuePerInstance = -0.5f
         });
 
 
