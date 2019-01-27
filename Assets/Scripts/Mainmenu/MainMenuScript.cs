@@ -14,7 +14,11 @@ public class MainMenuScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetButtonDown("Attack"))
+            NewGame();
+
+        if (Input.GetButtonDown("Menu"))
+            Quit(); 
     }
 
     public void NewGame()
