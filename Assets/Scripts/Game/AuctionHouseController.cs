@@ -106,8 +106,8 @@ public class AuctionHouseController : MonoBehaviour
     {
         if (!string.IsNullOrWhiteSpace(obj.Owner))
             return;
-
         Player.Money -= AuctionCost;
+        MessageWindow.Show($"-{AuctionCost} to claim and start auction"); 
         obj.Owner = "Auction"; 
         StartCoroutine(Auction(obj)); 
 
@@ -128,6 +128,7 @@ public class AuctionHouseController : MonoBehaviour
         //no one wanted it; bid fails. 
         if (maxBids.Count < 1)
         {
+            MessageWindow.Show($"Auction for {obj.Name} has failed!"); 
             //fail the auction. 
             obj.Owner = ""; 
             yield break;
@@ -147,10 +148,11 @@ public class AuctionHouseController : MonoBehaviour
         } while (maxBids.Count > 1); 
 
         yield return null;
-
+        MessageWindow.Show($"{currentWinner.name} has won the auction for {obj.Name}"); 
         obj.Owner = currentWinner.name;
         Companies[currentWinner.name].LastWon = 0; 
-        Player.Money += currentPrice; 
+        Player.Money += currentPrice;
+        MessageWindow.Show($"Recieved {currentPrice} from auction"); 
     }
 
     class CompanyMaxBid

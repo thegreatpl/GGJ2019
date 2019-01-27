@@ -58,7 +58,8 @@ public class GameController : MonoBehaviour
         ContentManager = gameObject.GetComponent<ContentManager>();
         ContentManager.LoadSprites();
         UIManager.CM = ContentManager;
-        UIManager.LoadScreen("Loading"); 
+        UIManager.LoadScreen("Loading");
+        MessageWindow.Instance.Init(); 
         yield return null;
         var player = ContentManager.Inst.GetPrefab("Player");
         var playerObj = Instantiate(player);
