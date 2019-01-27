@@ -6,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class ShipControlScript : MonoBehaviour
 {
+    public static int MaxArea; 
+
     public float Speed = 1f;
 
     public float RotationSpeed = 0.1f;
@@ -23,11 +25,20 @@ public class ShipControlScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (transform.position.x > MaxArea)
+            transform.position  = new Vector3 (-MaxArea, transform.position.y); 
+        else if (transform.position.x < -MaxArea)
+            transform.position = new Vector3(MaxArea, transform.position.y);
+
+        if (transform.position.y > MaxArea)
+            transform.position = new Vector3(transform.position.x, -MaxArea);
+        else if (transform.position.y < -MaxArea)
+            transform.position = new Vector3(transform.position.x, MaxArea); 
+
 
     }
 
-   public  void RotateClockwise()
+    public  void RotateClockwise()
     {
         Rigidbody2D.rotation += RotationSpeed; 
     }

@@ -27,6 +27,7 @@ public class Galaxy : MonoBehaviour
 
     public IEnumerator Generate()
     {
+        ShipControlScript.MaxArea = StarsystemGenerator.PlayingArea * 2; 
         yield return null;
         yield return StartCoroutine(StarsystemGenerator.ResourceMananger.LoadResources()); 
         yield return null;
