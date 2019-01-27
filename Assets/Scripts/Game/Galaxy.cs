@@ -7,7 +7,9 @@ public class Galaxy : MonoBehaviour
 {
     public StarSystemViewModel StarSystemViewModel;
 
-    public StarsystemGenerator StarsystemGenerator; 
+    public StarsystemGenerator StarsystemGenerator;
+
+    public AuctionHouseController AuctionHouseController; 
 
     public Dictionary<Vector2Int, StarSystem> StarSystems = new Dictionary<Vector2Int, StarSystem>(); 
 

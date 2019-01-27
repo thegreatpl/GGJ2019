@@ -63,6 +63,11 @@ namespace Assets.Scripts.StarSystems
         /// <summary>
         /// How much progress has been made on the survey. 
         /// </summary>
-        public float SurveyProgress = 0f; 
+        public float SurveyProgress = 0f;
+
+        /// <summary>
+        /// The owner of this object. 
+        /// </summary>
+        public string Owner; 
     }
 }

@@ -15,7 +15,18 @@ public class SurveyReviewController : MonoBehaviour
     /// <summary>
     /// Main information of the panel. 
     /// </summary>
-    public Text Text; 
+    public Text Text;
+
+
+    /// <summary>
+    /// The auction button. 
+    /// </summary>
+    public Button AuctionButton;
+
+    /// <summary>
+    /// Object currently being shown. 
+    /// </summary>
+    public SurveyObject SurveyObject; 
 
     // Start is called before the first frame update
     void Start()
@@ -48,26 +59,34 @@ public class SurveyReviewController : MonoBehaviour
     {
         GameController.Game.Pause = true; 
         if (Text == null)
-            InitText(); 
-
+            InitText();
+        SurveyObject = survey; 
         Text.text = $"System Survey Review: {Environment.NewLine}" +
             $"StarSystem: {survey.StarSystem} {Environment.NewLine}" +
             $"Name: {survey.Name} {Environment.NewLine}" +
             $"Type: {survey.Type} {Environment.NewLine}" +
             $"Atmosphere: {survey.Atmosphere} {Environment.NewLine}" +
             $"Size: {survey.Size} {Environment.NewLine}" +
+            $"Owner: {survey.Owner} {Environment.NewLine}" +
             $"Resources: {Environment.NewLine}"; 
 
         foreach(var res in survey.Resources)
         {
             Text.text += $"     {res.Name}: {res.Amount}"; 
         }
+
+       
     }
 
 
     public void ClaimAndAuction()
     {
+        if (string.IsNullOrWhiteSpace(SurveyObject?.Owner))
+            return;
 
+        GameController.Game.Galaxy.AuctionHouseController.AuctionObject(SurveyObject); 
+
+        Close(); 
     }
 
     public void Close()
